@@ -1,0 +1,34 @@
+﻿using Problems.Arrays;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Problems
+{
+    class Program
+    {
+        static void Main(string[] args) 
+        {
+            var arr = new ArrayMath();
+            var a = new int[] { 9, 9, 9 };
+            var b = new int[] { 9, 9, 9 };
+            var c = arr.Add(a, b);
+
+            foreach (var i in a)
+                Console.Write("{0} ", i);
+            Console.WriteLine();
+
+            foreach (var i in b)
+                Console.Write("{0} ", i);
+            Console.WriteLine();
+
+
+            foreach (var i in c)
+                Console.Write("{0} ", i);
+
+            Console.WriteLine();
+        }
+    }
+}
