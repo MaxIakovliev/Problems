@@ -9,26 +9,33 @@ namespace Problems
 {
     class Program
     {
-        static void Main(string[] args) 
+        static void Main(string[] args)
         {
-            var arr = new ArrayMath();
-            var a = new int[] { 9, 9, 9 };
-            var b = new int[] { 9, 9, 9 };
-            var c = arr.Add(a, b);
+            var bs = new BestTimeToBuyAndSellStock();
+            int buy, sell;
+            buy = sell = -1;
+            var data = new int[] { 7, 1, 5, 3, 6, 4 };
+            var profit=bs.Solve2(data, ref buy, ref sell);
+            Console.WriteLine("Case 1");
+            data.ToList().ForEach(i => Console.Write("{0} ",i));
 
-            foreach (var i in a)
-                Console.Write("{0} ", i);
-            Console.WriteLine();
-
-            foreach (var i in b)
-                Console.Write("{0} ", i);
-            Console.WriteLine();
+            if (buy !=sell)
+                Console.WriteLine("\n{0}-{1}={2}", data[sell], data[buy], profit);
+            else
+                Console.WriteLine("\nNo Operations, 0 profit");
 
 
-            foreach (var i in c)
-                Console.Write("{0} ", i);
 
-            Console.WriteLine();
+            data = new int[] { 7, 6, 4, 3, 1 };
+            profit=bs.Solve2(data, ref buy, ref sell);
+            Console.WriteLine("\nCase 2");
+            data.ToList().ForEach(i => Console.Write("{0} ", i));
+
+            if (buy != sell)
+                Console.WriteLine("\n{0}-{1}={2}", data[sell], data[buy], profit);
+            else
+                Console.WriteLine("\nNo Operations, 0 profit");
+        
         }
     }
 }
