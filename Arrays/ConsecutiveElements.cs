@@ -26,7 +26,7 @@ namespace Problems.Arrays
             {
                 if (allowDuplications)
                 {
-                    if (a[i] != a[i - 1] || Math.Abs(a[i]) - Math.Abs(a[i - 1]) != Math.Abs(1))
+                    if (a[i] != a[i - 1] && Math.Abs(a[i]) - Math.Abs(a[i - 1]) != Math.Abs(1))
                         return false;
                 }
                 else
