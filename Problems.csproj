@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Arrays\ArrayMath.cs" />
     <Compile Include="Arrays\BestTimeToBuyAndSellStock.cs" />
+    <Compile Include="Arrays\ConsecutiveElements.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
