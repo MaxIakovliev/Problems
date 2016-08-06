@@ -11,10 +11,13 @@ namespace Problems
     {
         static void Main(string[] args)
         {
-            var cc = new ConsecutiveElements();
-            var a = new int[] { 5, 2, 3, 1, 4 };
-            var result = cc.AreConsecutiveSolution1(a);
-            Console.WriteLine(result);
+            var ss = new Dictionary<int, int>();
+
+
+            //var cc = new ConsecutiveElements();
+            //var a = new int[] { 5, 2, 3, 1, 4 };
+            //var result = cc.AreConsecutiveSolution1(a);
+            //Console.WriteLine(result);
         
         }
     }
