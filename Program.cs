@@ -11,13 +11,15 @@ namespace Problems
     {
         static void Main(string[] args)
         {
-            var ss = new Dictionary<int, int>();
+            var arr = new MaxProductSubArray();
+            var data= new int[]{2,3, -2, 8, 200, -1, 12, 15};
+            var result = arr.Solution1(data);
 
+            foreach (var item in result)
+                Console.Write(" {0}", item);
 
-            //var cc = new ConsecutiveElements();
-            //var a = new int[] { 5, 2, 3, 1, 4 };
-            //var result = cc.AreConsecutiveSolution1(a);
-            //Console.WriteLine(result);
+            Console.WriteLine();
+           
         
         }
     }
