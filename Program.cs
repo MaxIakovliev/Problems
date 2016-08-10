@@ -11,16 +11,13 @@ namespace Problems
     {
         static void Main(string[] args)
         {
-            var arr = new MaxProductSubArray();
-            var data= new int[]{2,3, -2, 8, 200, -1, 12, 15};
-            var result = arr.Solution1(data);
+            var s = new IncreasingSubsequenceOfLengthThreeWithMaxProduct();
+            Console.WriteLine("Case1");
+            s.Solution1(new int[] { 6, 7, 8, 1, 2, 3, 9, 10 });
 
-            foreach (var item in result)
-                Console.Write(" {0}", item);
-
+            Console.WriteLine("Case2");
+            s.Solution1(new int[] { 1, 5, 10, 8, 9 });
             Console.WriteLine();
-           
-        
         }
     }
 }
