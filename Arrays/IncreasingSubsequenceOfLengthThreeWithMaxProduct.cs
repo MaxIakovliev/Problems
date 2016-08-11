@@ -64,5 +64,18 @@ namespace Problems.Arrays
             Console.WriteLine("max={0}", max);
             Console.WriteLine("{0}, {1}, {2}", ai, aj, ak);
         }
+
+
+        //How to test
+        //static void Main(string[] args)
+        //{
+        //    var s = new IncreasingSubsequenceOfLengthThreeWithMaxProduct();
+        //    Console.WriteLine("Case1");
+        //    s.Solution1(new int[] { 6, 7, 8, 1, 2, 3, 9, 10 });
+
+        //    Console.WriteLine("Case2");
+        //    s.Solution1(new int[] { 1, 5, 10, 8, 9 });
+        //    Console.WriteLine();
+        //}
     }
 }

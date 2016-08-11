@@ -1,4 +1,5 @@
 ﻿using Problems.Arrays;
+using Problems.DynamicProgramming;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,14 @@ namespace Problems
     {
         static void Main(string[] args)
         {
-            var s = new IncreasingSubsequenceOfLengthThreeWithMaxProduct();
-            Console.WriteLine("Case1");
-            s.Solution1(new int[] { 6, 7, 8, 1, 2, 3, 9, 10 });
-
-            Console.WriteLine("Case2");
-            s.Solution1(new int[] { 1, 5, 10, 8, 9 });
-            Console.WriteLine();
+            var f = new Fibonacci();
+            for (; ; )
+            {
+                var i = Convert.ToInt32(Console.ReadLine());
+                var a = f.Solution1(i).ToList();
+                a.ForEach(c => Console.Write("{0}, ", c));
+                Console.WriteLine();
+            }
         }
     }
 }
