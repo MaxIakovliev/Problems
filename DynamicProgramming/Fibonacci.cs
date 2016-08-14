@@ -20,5 +20,19 @@ namespace Problems.DynamicProgramming
                 result[i] = result[i - 1] + result[i - 2];
             return result;
         }
+
+
+        //How to test
+        //static void Main(string[] args)
+        //{
+        //    var f = new Fibonacci();
+        //    for (; ; )
+        //    {
+        //        var i = Convert.ToInt32(Console.ReadLine());
+        //        var a = f.Solution1(i).ToList();
+        //        a.ForEach(c => Console.Write("{0}, ", c));
+        //        Console.WriteLine();
+        //    }
+        //}
     }
 }

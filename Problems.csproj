@@ -47,6 +47,7 @@
     <Compile Include="Arrays\DuplicteElementsInKDistance.cs" />
     <Compile Include="Arrays\FindAllElementsOccurringMoreThanNbyKTimes.cs" />
     <Compile Include="Arrays\IncreasingSubsequenceOfLengthThreeWithMaxProduct.cs" />
+    <Compile Include="Arrays\KadanesMaximumSumSubarray.cs" />
     <Compile Include="Arrays\MaxProductSubArray.cs" />
     <Compile Include="DynamicProgramming\Fibonacci.cs" />
     <Compile Include="DynamicProgramming\WordWrapProblem.cs" />

@@ -12,14 +12,20 @@ namespace Problems
     {
         static void Main(string[] args)
         {
-            var f = new Fibonacci();
-            for (; ; )
+            var arr = new KadanesMaximumSumSubarray();
+            var a = new int[] { -1, -2, 3, 4, -5, 6 };
+            var result = arr.Solution(a);
+            foreach (var item in a)
+                Console.Write("{0} ", item);
+            Console.WriteLine();
+
+            for (int i = result.Item1; i <= result.Item2; i++)
             {
-                var i = Convert.ToInt32(Console.ReadLine());
-                var a = f.Solution1(i).ToList();
-                a.ForEach(c => Console.Write("{0}, ", c));
-                Console.WriteLine();
+                Console.Write("{0} ", a[i]);
             }
+            Console.WriteLine();
+            Console.WriteLine("max sum={0}", result.Item3);
+
         }
     }
 }
