@@ -49,6 +49,7 @@
     <Compile Include="Arrays\IncreasingSubsequenceOfLengthThreeWithMaxProduct.cs" />
     <Compile Include="Arrays\KadanesMaximumSumSubarray.cs" />
     <Compile Include="Arrays\MaxProductSubArray.cs" />
+    <Compile Include="DynamicProgramming\CoinChange.cs" />
     <Compile Include="DynamicProgramming\Fibonacci.cs" />
     <Compile Include="DynamicProgramming\WordWrapProblem.cs" />
     <Compile Include="Program.cs" />

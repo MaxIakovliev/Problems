@@ -25,7 +25,6 @@ namespace Problems
             }
             Console.WriteLine();
             Console.WriteLine("max sum={0}", result.Item3);
-
         }
     }
 }
