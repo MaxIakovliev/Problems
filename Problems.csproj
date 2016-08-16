@@ -48,6 +48,7 @@
     <Compile Include="Arrays\FindAllElementsOccurringMoreThanNbyKTimes.cs" />
     <Compile Include="Arrays\IncreasingSubsequenceOfLengthThreeWithMaxProduct.cs" />
     <Compile Include="Arrays\KadanesMaximumSumSubarray.cs" />
+    <Compile Include="Arrays\KSmallestElement.cs" />
     <Compile Include="Arrays\MaxProductSubArray.cs" />
     <Compile Include="DynamicProgramming\CoinChange.cs" />
     <Compile Include="DynamicProgramming\Fibonacci.cs" />
