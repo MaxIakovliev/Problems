@@ -12,19 +12,10 @@ namespace Problems
     {
         static void Main(string[] args)
         {
-            var arr = new KadanesMaximumSumSubarray();
-            var a = new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
-            var result = arr.Solution(a);
-            foreach (var item in a)
-                Console.Write("{0} ", item);
-            Console.WriteLine();
-
-            for (int i = result.Item1; i <= result.Item2; i++)
-            {
-                Console.Write("{0} ", a[i]);
-            }
-            Console.WriteLine();
-            Console.WriteLine("max sum={0}", result.Item3);
+            var ks = new KSmallestElement();
+            var arr = new int[] { 7, 10, 4, 3, 20, 15 };
+            var result = ks.SortSolution(arr, 3);
+            Console.WriteLine(result);
         }
     }
 }
