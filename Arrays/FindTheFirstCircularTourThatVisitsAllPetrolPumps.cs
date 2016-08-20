@@ -45,5 +45,18 @@ namespace Problems.Arrays
             }
             return start;
         }
+
+        //How to test
+        //static void Main(string[] args)
+        //{
+        //    var p = new FindTheFirstCircularTourThatVisitsAllPetrolPumps();
+        //    var a = new[]{
+        //        new Tuple<int,int>(4,6),
+        //        new Tuple<int,int>(6,5),
+        //        new Tuple<int,int>(7,3),
+        //        new Tuple<int,int>(4,5)};
+        //    var i = p.Solution1(a);
+        //    Console.WriteLine(i);
+        //}
     }
 }
