@@ -75,5 +75,16 @@ namespace Problems.Arrays
             }
         }
 
+
+
+        //How to test
+        //static void Main(string[] args)
+        //{
+        //    var ks = new KSmallestElement();
+        //    var arr = new int[] { 7, 10, 4, 3, 20, 15 };
+        //    var result = ks.HeapSolution(arr, 5);
+        //    Console.WriteLine(result);
+        //    Console.ReadKey();
+        //}
     }
 }

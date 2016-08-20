@@ -46,6 +46,7 @@
     <Compile Include="Arrays\ConsecutiveElements.cs" />
     <Compile Include="Arrays\DuplicteElementsInKDistance.cs" />
     <Compile Include="Arrays\FindAllElementsOccurringMoreThanNbyKTimes.cs" />
+    <Compile Include="Arrays\FindTheFirstCircularTourThatVisitsAllPetrolPumps.cs" />
     <Compile Include="Arrays\IncreasingSubsequenceOfLengthThreeWithMaxProduct.cs" />
     <Compile Include="Arrays\KadanesMaximumSumSubarray.cs" />
     <Compile Include="Arrays\KSmallestElement.cs" />
