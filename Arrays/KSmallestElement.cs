@@ -12,16 +12,28 @@ namespace Problems.Arrays
     /// </summary>
     class KSmallestElement
     {
-        public int SortSolution(int[]a, int k)
+        public int SortSolution(int[] a, int k)
         {
-            Array.Reverse(a);
-            return a[k-1];
+            Array.Sort(a);
+            return a[k - 1];
         }
+        public int HeapSolution(int[] a, int k)
+        {
+            var heap = new MinHeap();
+            for(int i=0; i<a.Length; i++)
+            {
+                heap.Push(a[i]);
+            }
+            int result=0;
+            for (int i = 0; i < k; i++)
+                result = heap.Pop();
 
+            return result;
+        }
 
         private class MinHeap
         {
-            private List<int> _data;
+            public List<int> _data;
             public MinHeap()
             {
                 _data = new List<int>();
@@ -30,7 +42,7 @@ namespace Problems.Arrays
             public int GetParent(int i)
             {
                 if (i > 0)
-                    return (int)Math.Floor(((double)i - 1)/2);
+                    return (int)Math.Floor(((double)i - 1) / 2);
                 return Int32.MinValue;
             }
 
@@ -43,6 +55,7 @@ namespace Problems.Arrays
             {
                 var result = _data[0];
                 _data.RemoveAt(0);
+                Heapify(_data.Count - 1);
                 return result;
             }
             private void Heapify(int i)
@@ -53,10 +66,11 @@ namespace Problems.Arrays
                 if (parentIdx < 0)
                     return;
                 var parent = _data[parentIdx];
-                if(current<parent)
+                if (current < parent)
                 {
                     _data[parentIdx] = current;
                     _data[i] = parent;
+                    Heapify(parentIdx);
                 }
             }
         }
