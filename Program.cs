@@ -1,4 +1,5 @@
 ﻿using Problems.Arrays;
+using Problems.BinarySearch;
 using Problems.DynamicProgramming;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,11 @@ namespace Problems
     {
         static void Main(string[] args)
         {
-            var p = new NextGreaterElement();
-            var r = p.Solution1(new int[] { 4, 5, 2, 25 });
-            for (int i = 0; i < r.Length; i++)
-                Console.WriteLine("{0}->{1} ", r[i].Item1, r[i].Item2);
+            var p = new ArithmeticProgressionSearch();
+            var arr = new int[] { 1, 3, 7, 9, 11, 13 };
+            var result = p.Solution(arr);
+            Console.WriteLine(result);
+
         }
     }
 }

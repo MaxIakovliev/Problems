@@ -52,6 +52,7 @@
     <Compile Include="Arrays\KSmallestElement.cs" />
     <Compile Include="Arrays\MaxProductSubArray.cs" />
     <Compile Include="Arrays\NextGreaterElement.cs" />
+    <Compile Include="BinarySearch\ArithmeticProgressionSearch.cs" />
     <Compile Include="DynamicProgramming\CoinChange.cs" />
     <Compile Include="DynamicProgramming\Fibonacci.cs" />
     <Compile Include="DynamicProgramming\WordWrapProblem.cs" />

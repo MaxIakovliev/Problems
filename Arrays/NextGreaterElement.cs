@@ -38,5 +38,14 @@ namespace Problems.Arrays
                 result[result.Length - 1] = new Tuple<int, int>(a[a.Length - 1], -1);
             return result;
         }
+
+        //Howo to test
+        //static void Main(string[] args)
+        //{
+        //    var p = new NextGreaterElement();
+        //    var r = p.Solution1(new int[] { 4, 5, 2, 25 });
+        //    for (int i = 0; i < r.Length; i++)
+        //        Console.WriteLine("{0}->{1} ", r[i].Item1, r[i].Item2);
+        //}
     }
 }
