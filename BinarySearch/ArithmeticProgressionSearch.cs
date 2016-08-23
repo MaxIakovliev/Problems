@@ -33,5 +33,15 @@ namespace Problems.BinarySearch
             }
             return -1;
         }
+
+        //How to test
+        //static void Main(string[] args)
+        //{
+        //    var p = new ArithmeticProgressionSearch();
+        //    var arr = new int[] { 1, 3, 5, 7, 9, 13 };
+        //    var result = p.Solution(arr);
+        //    Console.WriteLine(result);
+
+        //}
     }
 }
