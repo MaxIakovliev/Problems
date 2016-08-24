@@ -20,17 +20,25 @@ namespace Problems.Leetcode
         /// <returns></returns>
         public int[] Solution1(int[] a, int target)
         {
+
             var result = new int[2] { -1, -1 };
             var storage = new Dictionary<int, int>();
             bool firstTime = true;
-            for (int i = 0; i < a.Length; i++)
+            bool fakeStep = true;
+            for (int i = 0; i < a.Length; )
             {
+                int ai = a[i];
 
-                int tmp = target - a[i];
+                if (fakeStep)
+                {
+                    ai = Int32.MinValue;
+                }
+
+                int tmp = target - ai;
                 if (!storage.ContainsKey(tmp))
                     storage.Add(tmp, i);
 
-                if (storage.ContainsKey(tmp) && storage.ContainsKey(a[i]) && a[i] == tmp && tmp == 0 && target == 0)
+                if (storage.ContainsKey(tmp) && storage.ContainsKey(ai) && ai == tmp && tmp == 0 && target == 0)
                 {
                     if (firstTime)
                         result[0] = i;
@@ -41,14 +49,29 @@ namespace Problems.Leetcode
                     }
                     firstTime = false;
                 }
-                else if (storage.ContainsKey(tmp) && storage.ContainsKey(a[i]) && a[i] + tmp == target)
+                else if (storage.ContainsKey(tmp) && storage.ContainsKey(ai) && ai + tmp == target)
                 {
-                    result[0] = storage[tmp];
+                    if (firstTime)
+                        result[0] = storage[tmp];
 
-                    result[1] = storage[a[i]];
-                    return result;
+                    if (result[1] == -1)
+                        result[1] = storage[ai];
+
+                    //if(storage[tmp]< result[0])
+                    //    result[0] = storage[tmp];
+
+
+                    firstTime = false;
+                    //    if (result[0] != result[1])
+                    //        return result;
+
                 }
-
+                if (fakeStep)
+                {
+                    fakeStep = false;
+                }
+                else
+                    i++;
             }
             return result;
         }
