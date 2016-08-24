@@ -9,7 +9,7 @@ namespace Problems.Leetcode
     /// <summary>
     /// https://leetcode.com/problems/two-sum/
     /// </summary>
-    class TwoSum
+    public class TwoSum
     {
         /// <summary>
         /// Time Complexity O(n)
@@ -18,21 +18,40 @@ namespace Problems.Leetcode
         /// <param name="a"></param>
         /// <param name="target"></param>
         /// <returns></returns>
-        public int[] Solution1(int [] a, int target)
+        public int[] Solution1(int[] a, int target)
         {
-            var result = new int[2];
-            var storage = new Dictionary<int,int>();
-
-            for(int i=0; i<a.Length; i++)
+            var result = new int[2] { -1, -1 };
+            var storage = new Dictionary<int, int>();
+            bool firstTime = true;
+            for (int i = 0; i < a.Length; i++)
             {
+
                 int tmp = target - a[i];
+                if (!storage.ContainsKey(tmp))
                     storage.Add(tmp, i);
-                if (storage.ContainsKey(tmp) && storage.ContainsKey(a[i]))
+
+                if (storage.ContainsKey(tmp) && storage.ContainsKey(a[i]) &&  a[i] == tmp && tmp == 0 && target == 0)
                 {
-                    result[0] = storage[tmp];
-                    result[1] = storage[a[i]];
-                    return result;
+                    if (firstTime )
+                        result[0] = i;
+                    else
+                    {
+                        result[1] = i;
+                        return result;
+                    }
+                    firstTime = false;
                 }
+                else if (storage.ContainsKey(tmp) && storage.ContainsKey(a[i]) )//&& a[i] != tmp)
+                {
+                   // if (firstTime)
+                        result[0] = tmp;
+                   
+                        result[1] =  a[i];
+                        return result;
+                    //}
+                    //firstTime = false;
+                }
+
             }
             return result;
         }

@@ -15,9 +15,11 @@ namespace Problems
         static void Main(string[] args)
         {
             var p = new TwoSum();
-            var input = new int[] { 2, 7, 11, 15};
-            var result = p.Solution1(input, 9);
+            var input = new int[] {3,0,5,0,4 };//0,4,0,90 };//2, 7, 11, 15};
+            int target = 8;
+            var result = p.Solution1(input,target);//0); //9);
             Console.WriteLine("{0}={2} {1}={3},", result[0], result[1], input[result[0]], input[result[1]]);
+            Console.WriteLine(input[result[0]] + input[result[1]] == target);
         }
     }
 }
