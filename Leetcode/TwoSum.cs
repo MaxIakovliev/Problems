@@ -30,9 +30,9 @@ namespace Problems.Leetcode
                 if (!storage.ContainsKey(tmp))
                     storage.Add(tmp, i);
 
-                if (storage.ContainsKey(tmp) && storage.ContainsKey(a[i]) &&  a[i] == tmp && tmp == 0 && target == 0)
+                if (storage.ContainsKey(tmp) && storage.ContainsKey(a[i]) && a[i] == tmp && tmp == 0 && target == 0)
                 {
-                    if (firstTime )
+                    if (firstTime)
                         result[0] = i;
                     else
                     {
@@ -41,15 +41,12 @@ namespace Problems.Leetcode
                     }
                     firstTime = false;
                 }
-                else if (storage.ContainsKey(tmp) && storage.ContainsKey(a[i]) )//&& a[i] != tmp)
+                else if (storage.ContainsKey(tmp) && storage.ContainsKey(a[i]) && a[i] + tmp == target)
                 {
-                   // if (firstTime)
-                        result[0] = tmp;
-                   
-                        result[1] =  a[i];
-                        return result;
-                    //}
-                    //firstTime = false;
+                    result[0] = storage[tmp];
+
+                    result[1] = storage[a[i]];
+                    return result;
                 }
 
             }
