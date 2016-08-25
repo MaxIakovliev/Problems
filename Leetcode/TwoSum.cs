@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 //using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,20 +23,25 @@ namespace Problems.Leetcode
         {
 
             var result = new int[2] { -1, -1 };
-            var storage = new Dictionary<int, int>();
-            for (int i = 0; i < a.Length; i++)
+            var len = a.Length;
+            var storage = new Dictionary<int, int>(len);
+            unchecked
             {
-                int tmp = target - a[i];
-                if (storage.ContainsKey(a[i]))
+
+                for (int i = 0; i < len; i++)
                 {
-                    result[0] = storage[a[i]];
-                    result[1] = i;
-                    break;
-                }
-                else
-                {
-                    if (!storage.ContainsKey(tmp))
-                        storage.Add(tmp, i);
+                    if (storage.ContainsKey(a[i]))
+                    {
+                        result[0] = storage[a[i]];
+                        result[1] = i;
+                        return result;
+                    }
+                    else
+                    {
+                        int tmp = target - a[i];
+                        if (!storage.ContainsKey(tmp))
+                            storage.Add(tmp, i);
+                    }
                 }
             }
             return result;
