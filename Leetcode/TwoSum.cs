@@ -23,55 +23,20 @@ namespace Problems.Leetcode
 
             var result = new int[2] { -1, -1 };
             var storage = new Dictionary<int, int>();
-            bool firstTime = true;
-            bool fakeStep = true;
-            for (int i = 0; i < a.Length; )
+            for (int i = 0; i < a.Length; i++)
             {
-                int ai = a[i];
-
-                if (fakeStep)
+                int tmp = target - a[i];
+                if (storage.ContainsKey(a[i]))
                 {
-                    ai = Int32.MinValue;
-                }
-
-                int tmp = target - ai;
-                if (!storage.ContainsKey(tmp))
-                    storage.Add(tmp, i);
-
-                if (storage.ContainsKey(tmp) && storage.ContainsKey(ai) && ai == tmp && tmp == 0 && target == 0)
-                {
-                    if (firstTime)
-                        result[0] = i;
-                    else
-                    {
-                        result[1] = i;
-                        return result;
-                    }
-                    firstTime = false;
-                }
-                else if (storage.ContainsKey(tmp) && storage.ContainsKey(ai) && ai + tmp == target)
-                {
-                    if (firstTime)
-                        result[0] = storage[tmp];
-
-                    if (result[1] == -1)
-                        result[1] = storage[ai];
-
-                    //if(storage[tmp]< result[0])
-                    //    result[0] = storage[tmp];
-
-
-                    firstTime = false;
-                    //    if (result[0] != result[1])
-                    //        return result;
-
-                }
-                if (fakeStep)
-                {
-                    fakeStep = false;
+                    result[0] = storage[a[i]];
+                    result[1] = i;
+                    break;
                 }
                 else
-                    i++;
+                {
+                    if (!storage.ContainsKey(tmp))
+                        storage.Add(tmp, i);
+                }
             }
             return result;
         }
