@@ -122,7 +122,109 @@ namespace Problems.Leetcode
             return result;
         }
 
+
+
+
+        public ListNode Solution3(ListNode l1, ListNode l2)
+        {
+            int next = 0;
+            var ql1 = l1;
+            var ql2 = l2;
+            ListNode prevql1 = null;
+            while (ql1 != null && ql2 != null)
+            {
+                int tmp = ql1.val + ql2.val + next;
+                next = 0;
+                if (tmp >= 10)
+                {
+                    ql1.val = tmp % 10;
+                    next = 1;
+                }
+                else
+                {
+                    ql1.val = tmp;
+                }
+                prevql1 = ql1;
+                ql1 = ql1.next;
+                ql2 = ql2.next;
+            }
+
+            ListNode tmpl = null;
+
+            if (ql1 != null)
+                tmpl = ql1;
+            else if (ql2 != null)
+                tmpl = ql2;
+
+            if (tmpl != null)
+            {
+                ListNode tl1 = null;
+                var tl2 = tl1;
+                ListNode prevql2 = null;
+                while (tmpl != null)
+                {
+                    var tmp = tmpl.val + next;
+                    next = 0;
+                    if (tmp >= 10)
+                    {
+                        next = 1;
+                        if (tl1 == null)
+                        {
+                            tl1 = new ListNode(tmp % 10);
+                            tl2 = tl1;
+                            prevql2 = tl1;
+                        }
+                        else
+                        {
+                            tl1.next = new ListNode(tmp % 10);
+                            tl1 = tl1.next;
+                            prevql2 = tl1;
+                        }
+                    }
+                    else
+                    {
+                        if (tl1 == null)
+                        {
+                            tl1 = new ListNode(tmp);
+                            tl2 = tl1;
+                            prevql2 = tl1;
+                        }
+                        else
+                        {
+                            tl1.next = new ListNode(tmp);
+                            tl1 = tl1.next;
+                            prevql2 = tl1;
+                        }
+                    }
+                    tmpl = tmpl.next;
+                }
+
+                ql1 = prevql1;
+
+                if (tl2 != null)
+                    ql1.next = tl2;
+
+                 
+
+                prevql1 = prevql2;
+            }
+
+           
+
+            if (next > 0)
+            {
+                ql1 = prevql1;
+                ql1.next = new ListNode(next);
+            }
+
+            return l1;
+        }
+
     }
+
+
+
+
 
 
 

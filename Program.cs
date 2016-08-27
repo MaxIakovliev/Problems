@@ -14,7 +14,7 @@ namespace Problems
     {
         static void Main(string[] args)
         {
-            var a = new int[] { 2, 4, 3 };
+            var a = new int[] { 8,9,9};
             var l1 = new ListNode(a[0]);
             var t = l1;
             for(int i=1;i<a.Length; i++)
@@ -23,7 +23,7 @@ namespace Problems
                 t = t.next;
             }
 
-            a = new int[] { 5,6,4};
+            a = new int[] {2};
             var l2 = new ListNode(a[0]);
             t = l2;
             for (int i = 1; i < a.Length; i++)
@@ -33,7 +33,7 @@ namespace Problems
             }
 
             var p = new AddTwoNumbers();
-            var res = p.Solution2(l1, l2);
+            var res = p.Solution3(l1, l2);
 
             while(res!=null)
             {
