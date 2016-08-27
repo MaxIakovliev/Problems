@@ -33,7 +33,7 @@ namespace Problems
             }
 
             var p = new AddTwoNumbers();
-            var res = p.Solution1(l1, l2);
+            var res = p.Solution2(l1, l2);
 
             while(res!=null)
             {

@@ -15,18 +15,18 @@ namespace Problems.Leetcode
         public ListNode Solution1(ListNode l1, ListNode l2)
         {
             var stack = new Stack<int>();
-            while(l1!=null)
+            while (l1 != null)
             {
                 stack.Push(l1.val);
                 l1 = l1.next;
             }
-            
+
             var sb = new StringBuilder(stack.Count());
             while (stack.Count > 0)
                 sb.Append(stack.Pop());
 
-            int num1 = Convert.ToInt32(sb.ToString());
-            
+            decimal num1 = Convert.ToDecimal(sb.ToString());
+
             while (l2 != null)
             {
                 stack.Push(l2.val);
@@ -35,10 +35,10 @@ namespace Problems.Leetcode
             sb = new StringBuilder(stack.Count());
             while (stack.Count > 0)
                 sb.Append(stack.Pop());
-            num1 = num1 + (Convert.ToInt32(sb.ToString()));
+            num1 = num1 + (Convert.ToDecimal(sb.ToString()));
             sb = new StringBuilder(num1.ToString());
 
-            var result = new ListNode(Convert.ToInt32( sb[sb.Length-1].ToString()));
+            var result = new ListNode(Convert.ToInt32(sb[sb.Length - 1].ToString()));
             var b = result;
             for (int i = sb.Length - 2; i >= 0; i--)
             {
@@ -48,7 +48,85 @@ namespace Problems.Leetcode
             }
             return result;
         }
+
+
+        public ListNode Solution2(ListNode l1, ListNode l2)
+        {
+            int next = 0;
+            ListNode result = null;
+            ListNode q = result;
+            while (l1 != null && l2 != null)
+            {
+                int tmp = l1.val + l2.val + next;
+                next = 0;
+                if (tmp >= 10)
+                {
+                    if (result == null)
+                    {
+                        result = new ListNode(tmp % 10);
+                        q = result;
+                    }
+                    else
+                    {
+                        q.next = new ListNode(tmp % 10);
+                        q = q.next;
+                    }
+                    next = 1;
+                }
+                else
+                {
+                    if (result == null)
+                    {
+                        result = new ListNode(tmp);
+                        q = result;
+                    }
+                    else
+                    {
+                        q.next = new ListNode(tmp);
+                        q = q.next;
+                    }
+                }
+                l1 = l1.next;
+                l2 = l2.next;
+            }
+
+            ListNode tmpl = null;
+            if (l1 != null)
+                tmpl = l1;
+            else if (l2 != null)
+                tmpl = l2;
+
+            while (tmpl != null)
+            {
+                int tmp = tmpl.val + next;
+                next = 0;
+                if (tmp >= 10)
+                {
+                    q.next = new ListNode(tmp % 10);
+                    q = q.next;
+                    next = 1;
+                }
+                else
+                {
+                    q.next = new ListNode(tmp);
+                    q = q.next;
+                }
+
+                tmpl = tmpl.next;
+            }
+
+            if (next > 0)
+                q.next = new ListNode(next);
+
+
+            return result;
+        }
+
     }
+
+
+
+
     public class ListNode
     {
         public int val;
