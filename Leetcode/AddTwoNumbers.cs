@@ -12,7 +12,7 @@ namespace Problems.Leetcode
     public class AddTwoNumbers
     {
 
-        public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+        public ListNode Solution1(ListNode l1, ListNode l2)
         {
             var stack = new Stack<int>();
             while(l1.next!=null)
