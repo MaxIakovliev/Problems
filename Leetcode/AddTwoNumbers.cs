@@ -15,7 +15,7 @@ namespace Problems.Leetcode
         public ListNode Solution1(ListNode l1, ListNode l2)
         {
             var stack = new Stack<int>();
-            while(l1.next!=null)
+            while(l1!=null)
             {
                 stack.Push(l1.val);
                 l1 = l1.next;
@@ -25,11 +25,11 @@ namespace Problems.Leetcode
             while (stack.Count > 0)
                 sb.Append(stack.Pop());
 
-            int num1 = Convert.ToInt16(sb.ToString());
+            int num1 = Convert.ToInt32(sb.ToString());
             
-            while (l2.next != null)
+            while (l2 != null)
             {
-                stack.Push(l1.val);
+                stack.Push(l2.val);
                 l2 = l2.next;
             }
             sb = new StringBuilder(stack.Count());
@@ -38,11 +38,13 @@ namespace Problems.Leetcode
             num1 = num1 + (Convert.ToInt32(sb.ToString()));
             sb = new StringBuilder(num1.ToString());
 
-            var result = new ListNode(sb[sb.Length-1]);
+            var result = new ListNode(Convert.ToInt32( sb[sb.Length-1].ToString()));
+            var b = result;
             for (int i = sb.Length - 2; i >= 0; i--)
             {
-                var t = new ListNode(sb[i]);
-                result.next = t;
+                var t = new ListNode(Convert.ToInt32(sb[i].ToString()));
+                b.next = t;
+                b = b.next;
             }
             return result;
         }

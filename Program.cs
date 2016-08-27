@@ -14,12 +14,33 @@ namespace Problems
     {
         static void Main(string[] args)
         {
-            var p = new TwoSum();
-            var input = new int[] {4,0,8,6,9};//0,4,0,90 };//2, 7, 11, 15};
-            int target = 8;
-            var result = p.Solution1(input,target);//0); //9);
-            Console.WriteLine("{0}, {1}; {2},{3},", result[0], result[1], input[result[0]], input[result[1]]);
-            Console.WriteLine(input[result[0]] + input[result[1]] == target);
+            var a = new int[] { 2, 4, 3 };
+            var l1 = new ListNode(a[0]);
+            var t = l1;
+            for(int i=1;i<a.Length; i++)
+            {
+                t.next = new ListNode(a[i]);
+                t = t.next;
+            }
+
+            a = new int[] { 5,6,4};
+            var l2 = new ListNode(a[0]);
+            t = l2;
+            for (int i = 1; i < a.Length; i++)
+            {
+                t.next = new ListNode(a[i]);
+                t = t.next;
+            }
+
+            var p = new AddTwoNumbers();
+            var res = p.Solution1(l1, l2);
+
+            while(res!=null)
+            {
+                Console.Write("{0} ",res.val);
+                res = res.next;
+            }
+            Console.WriteLine();
         }
     }
 }
