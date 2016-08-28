@@ -124,7 +124,12 @@ namespace Problems.Leetcode
 
 
 
-
+        /// <summary>
+        /// performance optimized solution
+        /// </summary>
+        /// <param name="l1"></param>
+        /// <param name="l2"></param>
+        /// <returns></returns>
         public ListNode Solution3(ListNode l1, ListNode l2)
         {
             int next = 0;
