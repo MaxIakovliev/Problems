@@ -21,19 +21,19 @@ namespace Problems.Leetcode
             if (string.IsNullOrEmpty(s))
                 return 0;
             var current = new Dictionary<char, int>();
-            int start = 0, end = 0, maxStart = 0, maxEnd = 0, len=0;
-            for(int i=0; i<s.Length; i++)
+            int start = 0, end = 0, maxStart = 0, maxEnd = 0, len = 0;
+            for (int i = 0; i < s.Length; i++)
             {
-                if(current.ContainsKey(s[i]))
+                if (current.ContainsKey(s[i]))
                 {
                     len = end - start;
-                    if(len>(maxEnd-maxStart))
+                    if (len > (maxEnd - maxStart))
                     {
                         maxStart = start;
                         maxEnd = end;
                     }
                     start = current[s[i]] + 1;
-                    for(int k=current[s[i]]; k>=0; k--)
+                    for (int k = current[s[i]]; k >= 0; k--)
                     {
                         if (current.ContainsValue(k))
                             current.Remove(s[k]);
@@ -43,14 +43,92 @@ namespace Problems.Leetcode
                 current.Add(s[i], i);
             }
 
-             len = end - start;
+            len = end - start;
             if (len > (maxEnd - maxStart))
             {
                 maxStart = start;
                 maxEnd = end;
             }
 
-            Console.WriteLine(s.Substring(maxStart, maxEnd +1- maxStart));
+            Console.WriteLine(s.Substring(maxStart, maxEnd + 1 - maxStart));
+
+            return maxEnd + 1 - maxStart;
+        }
+
+
+
+        public int Solution2(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return 0;
+            var current = new Dictionary<char, int>();
+            int start = 0, end = 0, maxStart = 0, maxEnd = 0, len = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (current.ContainsKey(s[i]))
+                {
+                    len = end - start;
+                    if (len > (maxEnd - maxStart))
+                    {
+                        maxStart = start;
+                        maxEnd = end;
+                    }
+                    start = current[s[i]] + 1;
+                    i = start;
+                    current.Clear();
+
+                }
+                end = i;
+                current.Add(s[i], i);
+            }
+
+            len = end - start;
+            if (len > (maxEnd - maxStart))
+            {
+                maxStart = start;
+                maxEnd = end;
+            }
+
+            Console.WriteLine(s.Substring(maxStart, maxEnd + 1 - maxStart));
+
+            return maxEnd + 1 - maxStart;
+        }
+
+
+
+        public int Solution3(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return 0;
+            var current = new Dictionary<char, int>();
+            int start = 0, end = 0, maxStart = 0, maxEnd = 0, len = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (current.ContainsKey(s[i]) && current[s[i]] >= start)
+                {
+                    len = end - start;
+                    if (len > (maxEnd - maxStart))
+                    {
+                        maxStart = start;
+                        maxEnd = end;
+                    }
+                    start = current[s[i]] + 1;
+                }
+                end = i;
+                if (current.ContainsKey(s[i]))
+                    current[s[i]] = i;
+                else
+                    current.Add(s[i], i);
+            }
+
+            len = end - start;
+            if (len > (maxEnd - maxStart))
+            {
+                maxStart = start;
+                maxEnd = end;
+            }
+
+            Console.WriteLine(s.Substring(maxStart, maxEnd + 1 - maxStart));
 
             return maxEnd + 1 - maxStart;
         }
