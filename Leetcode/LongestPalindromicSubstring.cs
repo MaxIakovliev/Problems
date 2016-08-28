@@ -15,19 +15,20 @@ namespace Problems.Leetcode
 
             if (s.Length == 1)
                 return s;
+            if (s.Length == 2 && char.ToUpperInvariant(s[0]) == char.ToUpperInvariant(s[1]))
+                return s;
             int start = 0, end = 0, maxStart = 0, maxEnd = 0;
-            for(int i=1; i<s.Length; i++)
+            for (int i = 1; i < s.Length; i++)
             {
-                GetPalindrome(s, i, out start, out end);
+                GetPalindrome2(s, i, out start, out end);
                 if (start < 0 || end < 0) continue;
                 var len = end - start;
-                if(len>(maxEnd-maxStart))
+                if (len > (maxEnd - maxStart))
                 {
                     maxStart = start;
                     maxEnd = end;
                 }
             }
-            Console.WriteLine(s.Substring(maxStart, maxEnd + 1 - maxStart));
 
             return s.Substring(maxStart, maxEnd + 1 - maxStart);
         }
@@ -35,15 +36,110 @@ namespace Problems.Leetcode
         private void GetPalindrome(string s, int idx, out int start, out int end)
         {
             start = end = -1;
-            bool valid=true;
+            bool valid = true;
             int i = 1;
             do
             {
-                if ((idx - i) >= 0 && s[idx - i] == s[idx + i] && idx + i < s.Length)
+                if ((idx - i) >= 0 && idx + i < s.Length  &&
+                    (
+                        (char.ToUpperInvariant(s[idx - i]) == char.ToUpperInvariant(s[idx + i]))
+                    )
+                   )
                 {
-                    start = idx - 1;
+                    start = idx - i;
                     end = idx + i;
                     i++;
+                }
+                else if ((idx - i) >= 0 && idx + i < s.Length - 1 &&
+                    idx + i + 1 < s.Length  && char.ToUpperInvariant(s[idx]) == char.ToUpperInvariant(s[idx + 1])
+                        && char.ToUpperInvariant(s[idx - i]) == char.ToUpperInvariant(s[idx + i + 1]))
+                {
+                    start = idx - i;
+                    end = idx + i + 1;
+                    i++;
+                }
+                else if (idx + i < s.Length &&
+                    (
+                        (char.ToUpperInvariant(s[idx]) == char.ToUpperInvariant(s[idx + i]))
+                    )
+                   )
+                {
+                    start = idx;
+                    end = idx + i;
+                    i++;
+                }
+                else if ((idx - i) >= 0 &&
+                (
+                    (char.ToUpperInvariant(s[idx - i]) == char.ToUpperInvariant(s[idx]))
+                )
+               )
+                {
+                    start = idx - i;
+                    end = idx;
+                    i++;
+                }
+                else
+                    valid = false;
+            } while (valid);
+        }
+
+
+
+        private void GetPalindrome2(string s, int idx, out int start, out int end)
+        {
+            start = end = -1;
+            bool valid = true;
+            int i = 1;
+            bool case1 = false, case2 = false, case3 = false, case4 = false;
+            do
+            {
+                if ((idx - i) >= 0 && idx + i < s.Length - 1 &&
+                   idx + i + 1 < s.Length && char.ToUpperInvariant(s[idx]) == char.ToUpperInvariant(s[idx + 1])
+                       && char.ToUpperInvariant(s[idx - i]) == char.ToUpperInvariant(s[idx + i + 1])
+                   && !case1 && !case3 && !case4
+                   )
+                {
+                    start = idx - i;
+                    end = idx + i + 1;
+                    i++;
+                    case2 = true;
+                } 
+                else
+                if ((idx - i) >= 0 && idx + i < s.Length &&
+                    (
+                        (char.ToUpperInvariant(s[idx - i]) == char.ToUpperInvariant(s[idx + i]))
+                    ) && !case2 && !case3 && !case4
+                   )
+                {
+                    start = idx - i;
+                    end = idx + i;
+                    i++;
+                    case1 = true;
+                }
+
+                else if (idx + i < s.Length &&
+                    (
+                        (char.ToUpperInvariant(s[idx]) == char.ToUpperInvariant(s[idx + i]))
+                    && !case1 && !case2 && !case4
+                    )
+                   )
+                {
+                    start = idx;
+                    end = idx + i;
+                    i++;
+                    case3 = true;
+                }
+                else if ((idx - i) >= 0 &&
+                (
+                    (char.ToUpperInvariant(s[idx - i]) == char.ToUpperInvariant(s[idx]))
+                && !case1 && !case2 && !case3
+                )
+               )
+                {
+                    start = idx - i;
+                    end = idx;
+                    i++;
+                    case4 = true;
                 }
                 else
                     valid = false;
