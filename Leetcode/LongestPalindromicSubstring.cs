@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Problems.Leetcode
 {
+    /// <summary>
+    /// https://leetcode.com/problems/longest-palindromic-substring/
+    /// </summary>
     public class LongestPalindromicSubstring
     {
         public string Solution1(string s)
@@ -32,59 +35,14 @@ namespace Problems.Leetcode
 
             return s.Substring(maxStart, maxEnd + 1 - maxStart);
         }
-
-        private void GetPalindrome(string s, int idx, out int start, out int end)
-        {
-            start = end = -1;
-            bool valid = true;
-            int i = 1;
-            do
-            {
-                if ((idx - i) >= 0 && idx + i < s.Length  &&
-                    (
-                        (char.ToUpperInvariant(s[idx - i]) == char.ToUpperInvariant(s[idx + i]))
-                    )
-                   )
-                {
-                    start = idx - i;
-                    end = idx + i;
-                    i++;
-                }
-                else if ((idx - i) >= 0 && idx + i < s.Length - 1 &&
-                    idx + i + 1 < s.Length  && char.ToUpperInvariant(s[idx]) == char.ToUpperInvariant(s[idx + 1])
-                        && char.ToUpperInvariant(s[idx - i]) == char.ToUpperInvariant(s[idx + i + 1]))
-                {
-                    start = idx - i;
-                    end = idx + i + 1;
-                    i++;
-                }
-                else if (idx + i < s.Length &&
-                    (
-                        (char.ToUpperInvariant(s[idx]) == char.ToUpperInvariant(s[idx + i]))
-                    )
-                   )
-                {
-                    start = idx;
-                    end = idx + i;
-                    i++;
-                }
-                else if ((idx - i) >= 0 &&
-                (
-                    (char.ToUpperInvariant(s[idx - i]) == char.ToUpperInvariant(s[idx]))
-                )
-               )
-                {
-                    start = idx - i;
-                    end = idx;
-                    i++;
-                }
-                else
-                    valid = false;
-            } while (valid);
-        }
-
-
-
+  
+        /// <summary>
+        /// check if string of palindrome by searching of 4 possiblec cases 
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="idx"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
         private void GetPalindrome2(string s, int idx, out int start, out int end)
         {
             start = end = -1;
