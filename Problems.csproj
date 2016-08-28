@@ -57,6 +57,7 @@
     <Compile Include="DynamicProgramming\Fibonacci.cs" />
     <Compile Include="DynamicProgramming\WordWrapProblem.cs" />
     <Compile Include="Leetcode\AddTwoNumbers.cs" />
+    <Compile Include="Leetcode\LongestPalindromicSubstring.cs" />
     <Compile Include="Leetcode\LongestSubstringWithoutRepeatingCharacters.cs" />
     <Compile Include="Leetcode\TwoSum.cs" />
     <Compile Include="Program.cs" />

@@ -95,7 +95,11 @@ namespace Problems.Leetcode
         }
 
 
-
+        /// <summary>
+        /// most optimized solution
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public int Solution3(string s)
         {
             if (string.IsNullOrEmpty(s))
