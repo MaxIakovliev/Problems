@@ -6,30 +6,53 @@ using System.Threading.Tasks;
 
 namespace Problems.Leetcode
 {
+    /// <summary>
+    /// https://leetcode.com/problems/longest-substring-without-repeating-characters/
+    /// </summary>
     public class LongestSubstringWithoutRepeatingCharacters
     {
-        public string Solution1(string s)
+        /// <summary>
+        /// Works correctly, but not matched time limitations.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public int Solution1(string s)
         {
-            var current = new HashSet<char>();
-            int start = 0, end = 0, maxStart=0, maxEnd=0;
+            if (string.IsNullOrEmpty(s))
+                return 0;
+            var current = new Dictionary<char, int>();
+            int start = 0, end = 0, maxStart = 0, maxEnd = 0, len=0;
             for(int i=0; i<s.Length; i++)
             {
-                if(current.Contains(s[i]))
+                if(current.ContainsKey(s[i]))
                 {
-                    current.Clear();
-                    var len = end - start;
-                    if(len>(maxStart-maxEnd))
+                    len = end - start;
+                    if(len>(maxEnd-maxStart))
                     {
                         maxStart = start;
                         maxEnd = end;
                     }
-                    start = i;
-                    end = i;
+                    start = current[s[i]] + 1;
+                    for(int k=current[s[i]]; k>=0; k--)
+                    {
+                        if (current.ContainsValue(k))
+                            current.Remove(s[k]);
+                    }
                 }
-                current.Add(s[i]);
                 end = i;
+                current.Add(s[i], i);
             }
-            return s.Substring(start, end - start);
+
+             len = end - start;
+            if (len > (maxEnd - maxStart))
+            {
+                maxStart = start;
+                maxEnd = end;
+            }
+
+            Console.WriteLine(s.Substring(maxStart, maxEnd +1- maxStart));
+
+            return maxEnd + 1 - maxStart;
         }
     }
 }
