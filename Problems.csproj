@@ -59,6 +59,7 @@
     <Compile Include="Leetcode\AddTwoNumbers.cs" />
     <Compile Include="Leetcode\LongestPalindromicSubstring.cs" />
     <Compile Include="Leetcode\LongestSubstringWithoutRepeatingCharacters.cs" />
+    <Compile Include="Leetcode\ReverseInteger.cs" />
     <Compile Include="Leetcode\TwoSum.cs" />
     <Compile Include="Leetcode\ZigZagConversion.cs" />
     <Compile Include="Program.cs" />
