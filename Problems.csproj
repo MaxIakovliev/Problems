@@ -60,6 +60,7 @@
     <Compile Include="Leetcode\LongestPalindromicSubstring.cs" />
     <Compile Include="Leetcode\LongestSubstringWithoutRepeatingCharacters.cs" />
     <Compile Include="Leetcode\TwoSum.cs" />
+    <Compile Include="Leetcode\ZigZagConversion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
