@@ -59,6 +59,7 @@
     <Compile Include="Leetcode\AddTwoNumbers.cs" />
     <Compile Include="Leetcode\LongestPalindromicSubstring.cs" />
     <Compile Include="Leetcode\LongestSubstringWithoutRepeatingCharacters.cs" />
+    <Compile Include="Leetcode\PalindromeNumber.cs" />
     <Compile Include="Leetcode\ReverseInteger.cs" />
     <Compile Include="Leetcode\StringToInteger.cs" />
     <Compile Include="Leetcode\TwoSum.cs" />
