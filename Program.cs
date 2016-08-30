@@ -12,11 +12,11 @@ namespace Problems
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
-            var p = new IntegerToRoman();
-            var roman=p.Solution1(1984);
-            Console.WriteLine(roman);
+            var p = new _3SumClosest();
+            var r = p.ThreeSumClosest(new int[] { 1, 1, -1, -1, 3 }, -1);
+            Console.WriteLine(r);
 
         }
     }
