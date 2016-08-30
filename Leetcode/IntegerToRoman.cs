@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Problems.Leetcode
 {
+    /// <summary>
+    /// https://leetcode.com/problems/integer-to-roman/
+    /// </summary>
     public class IntegerToRoman
     {
-        public string Convert(int num)
+        public string Solution1(int num)
         {
             var sb = new StringBuilder();
             var dict = new Dictionary<int, string>(){
@@ -72,24 +75,24 @@ namespace Problems.Leetcode
                 {
                     sb.Append(dict[10]);
                 }
-                else if(parts[i] > 10 && parts[i] <=30)
+                else if (parts[i] > 10 && parts[i] <= 30)
                 {
-                        for (int j = 0; j < parts[i]/10; j++)
-                        {
-                            sb.Append(dict[10]);
-                        }
+                    for (int j = 0; j < parts[i] / 10; j++)
+                    {
+                        sb.Append(dict[10]);
+                    }
 
                 }
-                else if(parts[i]==40)
+                else if (parts[i] == 40)
                 {
                     sb.Append(dict[10]);
                     sb.Append(dict[50]);
                 }
-                else if (parts[i]==50)
+                else if (parts[i] == 50)
                 {
                     sb.Append(dict[50]);
                 }
-                else if (parts[i]>50 && parts[i]<=50+30)
+                else if (parts[i] > 50 && parts[i] <= 50 + 30)
                 {
                     sb.Append(dict[50]);
                     for (int j = 5; j < (parts[i] / 10); j++)
@@ -97,16 +100,16 @@ namespace Problems.Leetcode
                         sb.Append(dict[10]);
                     }
                 }
-                else if(parts[i]==90)
+                else if (parts[i] == 90)
                 {
                     sb.Append(dict[10]);
                     sb.Append(dict[100]);
                 }
-                else if(parts[i]==100)
+                else if (parts[i] == 100)
                 {
                     sb.Append(dict[100]);
                 }
-                else if(parts[i]>100 && parts[i]<=300)
+                else if (parts[i] > 100 && parts[i] <= 300)
                 {
                     for (int j = 0; j < parts[i] / 100; j++)
                     {
@@ -122,7 +125,7 @@ namespace Problems.Leetcode
                 {
                     sb.Append(dict[500]);
                 }
-                else if(parts[i] > 500 && parts[i] <= 500+300)
+                else if (parts[i] > 500 && parts[i] <= 500 + 300)
                 {
                     sb.Append(dict[500]);
                     for (int j = 5; j < parts[i] / 100; j++)
@@ -139,7 +142,7 @@ namespace Problems.Leetcode
                 {
                     sb.Append(dict[1000]);
                 }
-                else if (parts[i] > 1000 && parts[i]<=4000)
+                else if (parts[i] > 1000 && parts[i] <= 4000)
                 {
                     for (int j = 0; j < parts[i] / 1000; j++)
                     {
@@ -150,5 +153,13 @@ namespace Problems.Leetcode
             return sb.ToString();
         }
 
+        public string Solution2(int num)
+        {
+            var M = new string[] { "", "M", "MM", "MMM", "MMMM" };
+            var C = new string[] { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
+            var X = new string[] { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
+            var I = new string[] { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+            return M[num / 1000] + C[(num % 1000) / 100] + X[(num % 100) / 10] + I[num % 10];
+        }
     }
 }

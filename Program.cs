@@ -15,7 +15,7 @@ namespace Problems
         static void Main(string[] args)
         {
             var p = new IntegerToRoman();
-            var roman=p.Convert(1984);
+            var roman=p.Solution1(1984);
             Console.WriteLine(roman);
 
         }
