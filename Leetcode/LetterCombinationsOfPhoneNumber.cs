@@ -19,37 +19,37 @@ namespace Problems.Leetcode
             var result = new List<string>();
             if (string.IsNullOrEmpty(digits)) return result;
 
-            for (int i = 0; i < digits.Length; i++)
+            for (int i = 0; i < digits.Length; i++) //walk through  input string
             {
                 if (!dict.ContainsKey(digits[i])) continue;
-                var bucket = dict[digits[i]];
+                var bucket = dict[digits[i]]; //pick bucket  based on current digit
 
-                if (result.Count() == 0)
+                if (result.Count() == 0) //if result is not exists yet-  distribute  letters from current bucket
                 {
                     for (int j = 0; j < bucket.Length; j++)
                         result.Add(bucket[j].ToString());
                     continue;
                 }
 
-                for (int j = 0; j < result.Count(); j++)
+                for (int j = 0; j < result.Count(); j++)//walk through  result
                 {
-                    if (result[j].Length < i + 1)
+                    if (result[j].Length >= i + 1) continue; //prevent duplications
+
+                    bool updatedFirst = false;
+                    var template = result[j];
+                    for (int k = 0; k < bucket.Length; k++) //walk through  selected bucket
                     {
-                        bool updatedFirst = false;
-                        var template = result[j];
-                        for (int k = 0; k < bucket.Length; k++)
+                        if (!updatedFirst) //update first record only
                         {
-                            if (!updatedFirst)
-                            {
-                                result[j] = result[j] + bucket[k].ToString();
-                                updatedFirst = true;
-                            }
-                            else
-                            {
-                                result.Add(template + bucket[k]);
-                            }
+                            result[j] = result[j] + bucket[k].ToString();
+                            updatedFirst = true;
+                        }
+                        else 
+                        {
+                            result.Add(template + bucket[k]); //adding new combinations to result
                         }
                     }
+
                 }
             }
 
