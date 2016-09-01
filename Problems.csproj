@@ -61,6 +61,7 @@
     <Compile Include="Leetcode\AddTwoNumbers.cs" />
     <Compile Include="Leetcode\ContainerWithMostWater.cs" />
     <Compile Include="Leetcode\IntegerToRoman.cs" />
+    <Compile Include="Leetcode\LetterCombinationsOfPhoneNumber.cs" />
     <Compile Include="Leetcode\LongestPalindromicSubstring.cs" />
     <Compile Include="Leetcode\LongestSubstringWithoutRepeatingCharacters.cs" />
     <Compile Include="Leetcode\PalindromeNumber.cs" />
