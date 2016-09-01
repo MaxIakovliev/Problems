@@ -14,9 +14,11 @@ namespace Problems
     {
         static void Main(string[] args) 
         {
-            var p = new _3SumClosest();
-            var r = p.ThreeSumClosest(new int[] { 1, 1, -1, -1, 3 }, -1);
-            Console.WriteLine(r);
+            var p = new MergeTwoSortedLists();
+            var l1 = new ListNode(1);
+            var l2 = new ListNode(1);
+            var result = p.Solution1(l1, l2);
+            //Console.WriteLine(r);
 
         }
     }
