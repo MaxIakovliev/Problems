@@ -14,11 +14,12 @@ namespace Problems
     {
         static void Main(string[] args) 
         {
-            var p = new MergeTwoSortedLists();
-            var l1 = new ListNode(1);
-            var l2 = new ListNode(1);
-            var result = p.Solution1(l1, l2);
-            //Console.WriteLine(r);
+            var p = new GenerateParentheses();
+            
+            var result = p.GenerateParenthesis(3);
+
+            foreach (var item in result)
+                Console.WriteLine(item);
 
         }
     }
