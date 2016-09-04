@@ -20,7 +20,7 @@ namespace ProblemTest.Leetcode
             {
                 ListNode pointer = null;
                 ListNode current = null;
-                var list = Enumerable.Range(0, 10 * i + 1).Reverse().ToList();
+                var list = Enumerable.Range(-10, 10 * i + 1).Reverse().ToList();
                 foreach (var item in list)
                     if (current == null)
                     {

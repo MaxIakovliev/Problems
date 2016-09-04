@@ -46,113 +46,97 @@ namespace Problems.Leetcode
 
         public class Heap<T> where T : IComparable
         {
-            private IList<T> _data;
+            private T[] _data;
+            private int last = 0;
+            private int capacity = 4;
+
 
             public Heap()
             {
-                _data = new List<T>();
-                _data.Add(default(T));
+                _data = new T[11];
+                last = 0;
+                capacity = 7;
             }
-           
 
             public int Count()
             {
-                return _data.Count()-1;
+                return last;
             }
 
             public void Push(T item)
             {
-                _data.Add(item);
+                last++;
+                if (Count() == capacity)
+                {
+                    Array.Resize<T>(ref _data, capacity * 2);
+                    capacity = capacity * 2;
+                }
+                _data[last] = item;
                 PushUp();
-            }
 
+            }
 
             public T Pop()
             {
-                if (Count() == 0)
-                    throw new Exception("Heap is empty");
-
                 var item = _data[1];
-                if (Count() > 0)
-                {
-                    _data[1] = _data[Count() ];
-                    _data.RemoveAt(Count());
-                }
-                PushDown();
-
+                _data[1] = _data[last];
+                last--;
+                Pushdown();
                 return item;
-
             }
 
-            private int GetParentIndex(int idx)
-            {
-                if (idx >0)
-                {
-                    return idx / 2;
-                }
-
-                return Int32.MinValue;
-            }
-
-
-            private int LeftIndex(int i)
-            {
-                return i * 2;
-            }
-
-
-            private int RightIndex(int i)
-            {
-                return i * 2 + 1;
-            }
-            private bool HasLeftChild(int i)
-            {
-                return LeftIndex(i) <= Count();
-            }
-            private bool HasRightChild(int i)
-            {
-                return RightIndex(i) <= Count();
-            }
-
-            private bool HasParent(int i)
-            {
-                return i > 1;
-            }
-
-          
-
-            private void PushDown()
+            private void Pushdown()
             {
                 int idx = 1;
-                while (HasLeftChild(idx))
+                while (true)
                 {
-                    var smallerChild = LeftIndex(idx);
-                    if (HasRightChild(idx) && _data[RightIndex(idx)].CompareTo(_data[LeftIndex(idx)]) < 0)
+                    int child = idx * 2;
+                    if (child > Count())
+                        break;
+                    if (child + 1 < Count())
                     {
-                        smallerChild = RightIndex(idx);
+                        child = FindMin(child, child + 1);
+
                     }
-                    if (_data[idx].CompareTo(smallerChild) > 0)
-                    {
-                        var tmp = _data[idx];
-                        _data[idx] = _data[smallerChild];
-                        _data[smallerChild] = tmp;
-                    }
-                    idx = smallerChild;
+                    if (_data[idx].CompareTo(_data[child]) < 0)
+                        break;
+
+                    Swap(idx, child);
+                    idx = child;
                 }
+
+            }
+
+            private void Swap(int idx, int child)
+            {
+                var tmp = _data[idx];
+                _data[idx] = _data[child];
+                _data[child] = tmp;
+            }
+
+            private int FindMin(int leftChild, int rightChild)
+            {
+                if (_data[leftChild].CompareTo(_data[rightChild]) < 0)
+                    return leftChild;
+                else 
+                    return rightChild;
+
             }
 
             private void PushUp()
             {
-                int idx = Count();
-
-                while(HasParent(idx) && _data[GetParentIndex(idx)].CompareTo(_data[idx])>0)
+                var idx = Count();
+                while (idx > 1)
                 {
-                    var tmp = _data[idx];
-                    _data[idx] = _data[GetParentIndex(idx)];
-                    _data[GetParentIndex(idx)] = tmp;
-                    idx = GetParentIndex(idx);
+                    var parentidx = idx / 2;
+                    if (_data[idx].CompareTo(_data[parentidx]) > 0)
+                        break;
+                    Swap(idx, parentidx);
+                    idx = parentidx;
                 }
             }
+
+
         }
     }
 }
