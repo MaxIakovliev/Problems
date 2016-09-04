@@ -80,6 +80,7 @@ namespace Problems.Leetcode
             {
                 var item = _data[1];
                 _data[1] = _data[last];
+                _data[last] = default(T);
                 last--;
                 Pushdown();
                 return item;
@@ -91,17 +92,15 @@ namespace Problems.Leetcode
                 while (true)
                 {
                     int child = idx * 2;
-                    if (child > Count())
+                    if (child >= Count() + 1)
                         break;
-                    if (child + 1 < Count())
+                    if (child + 1 <= Count())
                     {
                         child = FindMin(child, child + 1);
 
                     }
-                    if (_data[idx].CompareTo(_data[child]) < 0)
-                        break;
-
-                    Swap(idx, child);
+                    if (_data[idx].CompareTo(_data[child]) > 0)
+                        Swap(idx, child);
                     idx = child;
                 }
 
@@ -118,7 +117,7 @@ namespace Problems.Leetcode
             {
                 if (_data[leftChild].CompareTo(_data[rightChild]) < 0)
                     return leftChild;
-                else 
+                else
                     return rightChild;
 
             }

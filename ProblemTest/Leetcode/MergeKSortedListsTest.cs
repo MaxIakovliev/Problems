@@ -20,16 +20,16 @@ namespace ProblemTest.Leetcode
             {
                 ListNode pointer = null;
                 ListNode current = null;
-                var list = Enumerable.Range(-10, 10 * i + 1).Reverse().ToList();
+                var list = Enumerable.Range(0 * i, 2 * i).Reverse().ToList();
                 foreach (var item in list)
                     if (current == null)
                     {
-                        current = new ListNode(item);
+                        current = new ListNode(item * -1);
                         pointer = current;
                     }
                     else
                     {
-                        pointer.next = new ListNode(item);
+                        pointer.next = new ListNode(item * -1);
                         pointer = pointer.next;
                     }
                 _data.Add(current);
@@ -41,6 +41,58 @@ namespace ProblemTest.Leetcode
         {
             var p = new MergeKSortedLists();
             var result = p.MergeKLists(_data.ToArray());
+
+            while (result != null)
+            {
+                Console.WriteLine("{0} ", result.val);
+                result = result.next;
+            }
+        }
+
+        [Test]
+        public void MergeKListsTest2()
+        {
+            var p = new MergeKSortedLists();
+
+            var list = new ListNode(0);
+            var tmp = list;
+            tmp.next = new ListNode(2);
+            tmp = tmp.next;
+            tmp.next = new ListNode(5);
+
+
+            var result = p.MergeKLists(new ListNode[] { list });
+
+            while (result != null)
+            {
+                Console.WriteLine("{0} ", result.val);
+                result = result.next;
+            }
+        }
+
+
+        [Test]
+        public void MergeKListsTest3()
+        {
+            var p = new MergeKSortedLists();
+
+            ListNode pointer = null;
+            ListNode current = null;
+            var list = Enumerable.Range(1,7).ToList();
+            foreach (var item in list)
+                if (current == null)
+                {
+                    current = new ListNode(item );
+                    pointer = current;
+                }
+                else
+                {
+                    pointer.next = new ListNode(item );
+                    pointer = pointer.next;
+                }
+
+
+            var result = p.MergeKLists(new ListNode[] { current });
 
             while (result != null)
             {
