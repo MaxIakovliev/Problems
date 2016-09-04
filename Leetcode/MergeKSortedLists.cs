@@ -10,27 +10,27 @@ namespace Problems.Leetcode
     {
         public ListNode MergeKLists(ListNode[] lists)
         {
+            if (lists == null || lists.Count() == 0)
+                return null;
+
             ListNode result = null;
-            bool isEmpty = false;
+            int count = lists.Length;
             int idx = 0;
             var heap = new Heap<int>();
-            while(isEmpty)
+            while (idx < lists.Length)
             {
-                isEmpty = true;
-                if(lists[idx]!=null)
+                while (lists[idx] != null)
                 {
-                    isEmpty = false;
                     heap.Push(lists[idx].val);
                     lists[idx] = lists[idx].next;
-                    idx++;
                 }
-                if (idx == lists.Length) idx = 0;
+                idx++;
             }
 
             ListNode pointer = null;
-            while(heap.Count()!=0)
+            while (heap.Count() != 0)
             {
-                if(result==null)
+                if (result == null)
                 {
                     result = new ListNode(heap.Pop());
                     pointer = result;
@@ -51,57 +51,107 @@ namespace Problems.Leetcode
             public Heap()
             {
                 _data = new List<T>();
+                _data.Add(default(T));
             }
-            private void Heapify(int idx)
-            {
-                if (idx < 0) return;
-
-                var item = _data[idx];
-                if (item == null)
-                    return;
-                var parentIdx = GetParent(idx);
-                if (parentIdx < 0)
-                    return;
-
-                var parentItem = _data[parentIdx];
-                if (item.CompareTo(parentItem) > 0)
-                {
-                    _data[parentIdx] = item;
-                    _data[idx] = parentItem;
-                }
-            }
+           
 
             public int Count()
             {
-                return _data.Count();
+                return _data.Count()-1;
             }
 
             public void Push(T item)
             {
                 _data.Add(item);
-                Heapify(_data.Count - 1);
+                PushUp();
             }
 
 
             public T Pop()
             {
-                if (_data.Count == 0)
+                if (Count() == 0)
                     throw new Exception("Heap is empty");
 
-                var item = _data[0];
-                _data.RemoveAt(0);
-                Heapify(_data.Count - 1);
+                var item = _data[1];
+                if (Count() > 0)
+                {
+                    _data[1] = _data[Count() ];
+                    _data.RemoveAt(Count());
+                }
+                PushDown();
 
                 return item;
 
             }
 
-            private int GetParent(int idx)
+            private int GetParentIndex(int idx)
             {
-                if (idx > 0)
-                    return (int)Math.Floor((double)((idx - 1) / 2));
+                if (idx >0)
+                {
+                    return idx / 2;
+                }
 
                 return Int32.MinValue;
+            }
+
+
+            private int LeftIndex(int i)
+            {
+                return i * 2;
+            }
+
+
+            private int RightIndex(int i)
+            {
+                return i * 2 + 1;
+            }
+            private bool HasLeftChild(int i)
+            {
+                return LeftIndex(i) <= Count();
+            }
+            private bool HasRightChild(int i)
+            {
+                return RightIndex(i) <= Count();
+            }
+
+            private bool HasParent(int i)
+            {
+                return i > 1;
+            }
+
+          
+
+            private void PushDown()
+            {
+                int idx = 1;
+                while (HasLeftChild(idx))
+                {
+                    var smallerChild = LeftIndex(idx);
+                    if (HasRightChild(idx) && _data[RightIndex(idx)].CompareTo(_data[LeftIndex(idx)]) < 0)
+                    {
+                        smallerChild = RightIndex(idx);
+                    }
+                    if (_data[idx].CompareTo(smallerChild) > 0)
+                    {
+                        var tmp = _data[idx];
+                        _data[idx] = _data[smallerChild];
+                        _data[smallerChild] = tmp;
+                    }
+                    idx = smallerChild;
+                }
+            }
+
+            private void PushUp()
+            {
+                int idx = Count();
+
+                while(HasParent(idx) && _data[GetParentIndex(idx)].CompareTo(_data[idx])>0)
+                {
+                    var tmp = _data[idx];
+                    _data[idx] = _data[GetParentIndex(idx)];
+                    _data[GetParentIndex(idx)] = tmp;
+                    idx = GetParentIndex(idx);
+                }
             }
         }
     }
