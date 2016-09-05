@@ -106,5 +106,37 @@ namespace ProblemTest.Leetcode
                 result = result.next;
             }
         }
+
+        [Test]
+        public void TestSwapNodes4()
+        {
+            var input = new int[] { 1, 2, };
+            var output = new int[] { 2, 1};
+            var p = new SwapNodesInPairs();
+
+            ListNode data = null;
+            ListNode tmp = null;
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (data == null)
+                {
+                    data = new ListNode(input[i]);
+                    tmp = data;
+                }
+                else
+                {
+                    tmp.next = new ListNode(input[i]);
+                    tmp = tmp.next;
+                }
+            }
+            var result = p.SwapPairs(data);
+            for (int i = 0; i < input.Length; i++)
+            {
+                Console.WriteLine("expected:{0}, actual{1}", output[i], result.val);
+                Assert.AreEqual(output[i], result.val);
+                result = result.next;
+            }
+        }
     }
 }

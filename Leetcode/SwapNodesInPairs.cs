@@ -8,12 +8,10 @@ namespace Problems.Leetcode
 {
     public class SwapNodesInPairs
     {
-        public ListNode SwapPairs(ListNode head)
+        public ListNode SwapPairs2(ListNode head)
         {
 
             var tmp = head;
-            //var s = new ListNode[3];
-            //ListNode a = null, b = null, c = null, 
             ListNode prev = null;
             bool firstStep = true;
             while (true)
@@ -74,6 +72,89 @@ namespace Problems.Leetcode
 
             }
             return head;
+        }
+
+
+        public ListNode SwapPairs3(ListNode head)
+        {
+
+            var tmp = head;
+            ListNode prev = null;
+            bool firstStep = true;
+            ListNode a = null, b = null, c = null;
+            while (true)
+            {
+                if (tmp == null ||tmp.next == null)
+                    return head;
+
+                if (tmp.next.next == null)
+                {
+                    a = tmp;
+                    b = tmp.next;
+                    b.next = a;
+
+                    if (firstStep)
+                    {
+                        head = b;
+                        firstStep = false;
+                        prev = a;
+                    }
+                    else
+                    {
+                        prev.next = b;
+                        prev = prev.next;
+                        prev = prev.next;
+                    }
+                    return head ;
+                }
+
+                 a = tmp;
+                 b = tmp.next;
+                 c = tmp.next.next;
+
+
+                a.next = c;
+                b.next = a;
+
+                if (firstStep)
+                {
+                    head = b;
+                    firstStep = false;
+                    prev = a;
+                }
+                else
+                {
+                    prev.next = b;
+                    prev = prev.next;
+                    prev = prev.next;
+
+                }
+
+                tmp = c;
+
+
+            }
+            return null;
+        }
+
+
+
+        public ListNode SwapPairs(ListNode head)
+        {
+
+            ListNode dummy = new ListNode(0);
+            dummy.next = head;
+            ListNode current = dummy;
+            while (current.next != null && current.next.next != null)
+            {
+                ListNode first = current.next;
+                ListNode second = current.next.next;
+                first.next = second.next;
+                current.next = second;
+                current.next.next = first;
+                current = current.next.next;
+            }
+            return dummy.next;
         }
     }
 }
