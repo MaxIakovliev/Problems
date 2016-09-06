@@ -51,6 +51,7 @@
     <Compile Include="Leetcode\ReverseIntegerTest.cs" />
     <Compile Include="Leetcode\IntegerToRomanTest.cs" />
     <Compile Include="Leetcode\StringToIntegerTest.cs" />
+    <Compile Include="Leetcode\StrStrImplementationTest.cs" />
     <Compile Include="Leetcode\SwapNodesInPairsTest.cs" />
     <Compile Include="LongestSubstringWithoutRepeatingCharactersTest.cs" />
     <Compile Include="TwoSumTest.cs" />

@@ -73,6 +73,7 @@
     <Compile Include="Leetcode\ReverseInteger.cs" />
     <Compile Include="Leetcode\RomanToInt.cs" />
     <Compile Include="Leetcode\StringToInteger.cs" />
+    <Compile Include="Leetcode\StrStrImplementation.cs" />
     <Compile Include="Leetcode\SwapNodesInPairs.cs" />
     <Compile Include="Leetcode\TwoSum.cs" />
     <Compile Include="Leetcode\ValidParentheses.cs" />
