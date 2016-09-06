@@ -47,6 +47,7 @@
     <Compile Include="Leetcode\LetterCombinationsOfPhoneNumberTest.cs" />
     <Compile Include="Leetcode\LongestPalindromicSubstringTest.cs" />
     <Compile Include="Leetcode\MergeKSortedListsTest.cs" />
+    <Compile Include="Leetcode\RemoveElementTest.cs" />
     <Compile Include="Leetcode\ReverseIntegerTest.cs" />
     <Compile Include="Leetcode\IntegerToRomanTest.cs" />
     <Compile Include="Leetcode\StringToIntegerTest.cs" />

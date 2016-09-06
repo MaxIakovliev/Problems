@@ -69,6 +69,7 @@
     <Compile Include="Leetcode\MergeTwoSortedLists.cs" />
     <Compile Include="Leetcode\PalindromeNumber.cs" />
     <Compile Include="Leetcode\RemoveDuplicatesFfromSortedArray.cs" />
+    <Compile Include="Leetcode\RemoveElement.cs" />
     <Compile Include="Leetcode\ReverseInteger.cs" />
     <Compile Include="Leetcode\RomanToInt.cs" />
     <Compile Include="Leetcode\StringToInteger.cs" />
