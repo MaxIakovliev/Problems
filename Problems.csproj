@@ -56,6 +56,7 @@
     <Compile Include="DynamicProgramming\CoinChange.cs" />
     <Compile Include="DynamicProgramming\Fibonacci.cs" />
     <Compile Include="DynamicProgramming\WordWrapProblem.cs" />
+    <Compile Include="hackerrank\Strings\SuperReducedString.cs" />
     <Compile Include="Leetcode\3Sum.cs" />
     <Compile Include="Leetcode\3SumClosest.cs" />
     <Compile Include="Leetcode\AddTwoNumbers.cs" />
