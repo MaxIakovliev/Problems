@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddTwoNumbersTest.cs" />
+    <Compile Include="hackerrank\BeautifulBinaryStringTest.cs" />
     <Compile Include="hackerrank\SuperReducedStringTest.cs" />
     <Compile Include="Leetcode\LetterCombinationsOfPhoneNumberTest.cs" />
     <Compile Include="Leetcode\LongestPalindromicSubstringTest.cs" />
