@@ -13,10 +13,11 @@ namespace Problems.hackerrank.Strings
     {
         public int Solution1(string s)
         {
+            var c = new Common();
             StringBuilder sb = new StringBuilder(s);
             int steps = 0;
            int n=-1;
-            while((n=IndexOf(sb, "010"))>=0)
+            while((n=c.IndexOf(sb, "010"))>=0)
             {
                 steps++;
                 sb[n + 2] = '1';
@@ -24,30 +25,6 @@ namespace Problems.hackerrank.Strings
             return steps;
         }
 
-        public static int IndexOf(StringBuilder sb, string q)
-        {
-            if (string.IsNullOrEmpty(q)) return -1;
-            for (int i = 0; i <= sb.Length-q.Length+1; i++)
-            {
-                if (sb[i] == q[0])
-                {
-                    bool match = true;
-                    for (int j = i; j < i + q.Length; j++)
-                    {
-                        
-                        if (j>=sb.Length || sb[j] != q[j - i])
-                        {
-                            match = false;
-                            //i++;
-                            break;
-                        }
-                        
-                    }
-                    if (match)
-                        return i;
-                }
-            }
-            return -1;
-        }
+
     }
 }
