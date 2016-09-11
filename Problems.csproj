@@ -62,7 +62,10 @@
     <Compile Include="hackerrank\Strings\CamelCase.cs" />
     <Compile Include="hackerrank\Strings\FunnyString.cs" />
     <Compile Include="hackerrank\Strings\Gemstones.cs" />
+    <Compile Include="hackerrank\Strings\MarsExploration.cs" />
     <Compile Include="hackerrank\Strings\Pangrams.cs" />
+    <Compile Include="hackerrank\Strings\RichieRich.cs" />
+    <Compile Include="hackerrank\Strings\StringConstruction.cs" />
     <Compile Include="hackerrank\Strings\SuperReducedString.cs" />
     <Compile Include="Leetcode\3Sum.cs" />
     <Compile Include="Leetcode\3SumClosest.cs" />
