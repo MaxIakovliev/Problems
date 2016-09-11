@@ -63,6 +63,7 @@
     <Compile Include="hackerrank\Strings\FunnyString.cs" />
     <Compile Include="hackerrank\Strings\Gemstones.cs" />
     <Compile Include="hackerrank\Strings\MarsExploration.cs" />
+    <Compile Include="hackerrank\Strings\PalindromeIndex.cs" />
     <Compile Include="hackerrank\Strings\Pangrams.cs" />
     <Compile Include="hackerrank\Strings\RichieRich.cs" />
     <Compile Include="hackerrank\Strings\StringConstruction.cs" />

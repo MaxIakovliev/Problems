@@ -47,6 +47,7 @@
     <Compile Include="hackerrank\AlternatingCharactersTest.cs" />
     <Compile Include="hackerrank\BeautifulBinaryStringTest.cs" />
     <Compile Include="hackerrank\FunnyStringTest.cs" />
+    <Compile Include="hackerrank\PalindromeIndexTest.cs" />
     <Compile Include="hackerrank\RichieRichTest.cs" />
     <Compile Include="hackerrank\SuperReducedStringTest.cs" />
     <Compile Include="Leetcode\LetterCombinationsOfPhoneNumberTest.cs" />
