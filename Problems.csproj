@@ -62,6 +62,7 @@
     <Compile Include="hackerrank\Strings\BeautifulBinaryString.cs" />
     <Compile Include="hackerrank\Strings\CamelCase.cs" />
     <Compile Include="hackerrank\Strings\FunnyString.cs" />
+    <Compile Include="hackerrank\Strings\GameofThronesI.cs" />
     <Compile Include="hackerrank\Strings\Gemstones.cs" />
     <Compile Include="hackerrank\Strings\MarsExploration.cs" />
     <Compile Include="hackerrank\Strings\PalindromeIndex.cs" />
