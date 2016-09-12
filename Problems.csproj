@@ -70,6 +70,7 @@
     <Compile Include="hackerrank\Strings\StringConstruction.cs" />
     <Compile Include="hackerrank\Strings\SuperReducedString.cs" />
     <Compile Include="hackerrank\Strings\TheLoveLetterMystery.cs" />
+    <Compile Include="hackerrank\Strings\TwoStrings.cs" />
     <Compile Include="Leetcode\3Sum.cs" />
     <Compile Include="Leetcode\3SumClosest.cs" />
     <Compile Include="Leetcode\AddTwoNumbers.cs" />
