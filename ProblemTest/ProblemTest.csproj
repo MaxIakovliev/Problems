@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AddTwoNumbersTest.cs" />
     <Compile Include="hackerrank\AlternatingCharactersTest.cs" />
+    <Compile Include="hackerrank\AnagramTest.cs" />
     <Compile Include="hackerrank\BeautifulBinaryStringTest.cs" />
     <Compile Include="hackerrank\FunnyStringTest.cs" />
     <Compile Include="hackerrank\PalindromeIndexTest.cs" />
