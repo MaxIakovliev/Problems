@@ -59,6 +59,7 @@
     <Compile Include="DynamicProgramming\WordWrapProblem.cs" />
     <Compile Include="hackerrank\Strings\AlternatingCharacters.cs" />
     <Compile Include="hackerrank\Strings\Anagram.cs" />
+    <Compile Include="hackerrank\Strings\BearandSteadyGene.cs" />
     <Compile Include="hackerrank\Strings\BeautifulBinaryString.cs" />
     <Compile Include="hackerrank\Strings\CamelCase.cs" />
     <Compile Include="hackerrank\Strings\FunnyString.cs" />

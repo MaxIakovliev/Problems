@@ -1,9 +1,11 @@
 ﻿using Problems.Arrays;
 using Problems.BinarySearch;
 using Problems.DynamicProgramming;
+using Problems.hackerrank.Strings;
 using Problems.Leetcode;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +16,11 @@ namespace Problems
     {
         static void Main(string[] args) 
         {
-            var p = new GenerateParentheses();
-            
-            var result = p.GenerateParenthesis(3);
+            var p = new BearandSteadyGene();
 
-            foreach (var item in result)
-                Console.WriteLine(item);
+            p.Solution2(File.ReadAllText("BearandSteadyGene.txt"));
+
+            
 
         }
     }
