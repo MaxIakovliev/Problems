@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Problems.hackerrank.Strings
 {
-    class BuildAPalindrome
+    public class BuildAPalindrome
     {
         public void Solution1(string s1, string s2)
         {
@@ -65,90 +65,47 @@ namespace Problems.hackerrank.Strings
 
         public void Solution2(string s1, string s2)
         {
-            int start1 = 0, end1 = s1.Length - 1, start2 = 0, end2 = s2.Length - 1;
-            var list=new List<Tuple<int,int,int,int,int >>();
-            while (start1 < end1)
+            int start1 = 0, end1 = 1, start2 = 0, end2 = 1;
+            var list = new List<Tuple<int, int, int, int, int>>();
+
+            while (start1 < s1.Length)
             {
-                while (start2 < end2)
+                if (end1 + start1 >= s1.Length + 1)
                 {
-                    if (s1[start1] != s2[end2])
-                        end2--;
-                    else if (s1[end1] != s2[start2])
+                    start1++;
+                    //end1 = start1 + 1;
+                    end1 = 1;
+                }
+                if (end1 + start1 >= s1.Length + 1)
+                    continue;
+
+                start2 = 0;
+                //end2 = start2 + 1;
+                end2 = 1;
+                while (start2 < s2.Length)
+                {
+                    if (end2 + start2 >= s2.Length + 1)
+                    {
                         start2++;
-                    else
-                    {
-                        if(IsPalindrome(s1.Substring(start1, end1 - start1) + s2.Substring(start2, end2 - start2)))
-                        {
-                            list.Add(new Tuple<int, int, int, int, int>(start1, end1, start2, end2, (end2-start2)+ (end1-start1)));
-                        }
+                        end2 = 1;
+
                     }
+                    if (end2 + start2 >= s2.Length + 1)
+                        continue;
+
+
+                    var str = s1.Substring(start1, end1) + s2.Substring(start2, end2);
+                    if (IsPalindrome(str))
+                    {
+                        list.Add(new Tuple<int, int, int, int, int>(start1, end1, start2, end2, str.Length));
+                    }
+                    end2++;
+
                 }
-                end1--;
+
+                end1++;
             }
 
-            start1 = 0; end1 = s1.Length - 1; start2 = 0; end2 = s2.Length - 1;
-            while (start1 < end1)
-            {
-                while (start2 < end2)
-                {
-                    if (s1[start1] != s2[end2])
-                        end2--;
-                    else if (s1[end1] != s2[start2])
-                        start2++;
-                    else
-                    {
-                        if (IsPalindrome(s1.Substring(start1, end1 - start1) + s2.Substring(start2, end2 - start2)))
-                        {
-                            list.Add(new Tuple<int, int, int, int, int>(start1, end1, start2, end2, (end2 - start2) + (end1 - start1)));
-                        }
-                    }
-                }
-                start1++;
-            }
-
-
-            start1 = 0; end1 = s1.Length - 1; start2 = 0; end2 = s2.Length - 1;
-
-
-
-            while (start2 < end2)
-            {
-                while (start1 < end1)
-                {
-                    if (s1[start1] != s2[end2])
-                        end1--;
-                    else if (s1[end1] != s2[start2])
-                        start1++;
-                    else
-                    {
-                        if (IsPalindrome(s1.Substring(start1, end1 - start1) + s2.Substring(start2, end2 - start2)))
-                        {
-                            list.Add(new Tuple<int, int, int, int, int>(start1, end1, start2, end2, (end2 - start2) + (end1 - start1)));
-                        }
-                    }
-                }
-                end2--;
-            }
-
-            start1 = 0; end1 = s1.Length - 1; start2 = 0; end2 = s2.Length - 1;
-            while (start2 < end2)
-            {
-                while (start1 < end1)
-                {
-                    if (s1[start1] != s2[end2])
-                        end1--;
-                    else if (s1[end1] != s2[start2])
-                        start1++;
-                    else
-                    {
-                        if (IsPalindrome(s1.Substring(start1, end1 - start1) + s2.Substring(start2, end2 - start2)))
-                        {
-                            list.Add(new Tuple<int, int, int, int, int>(start1, end1, start2, end2, (end2 - start2) + (end1 - start1)));
-                        }
-                    }
-                }
-                start2++;
-            }
 
             if (list.Count == 0)
             {
@@ -156,9 +113,95 @@ namespace Problems.hackerrank.Strings
                 return;
             }
 
+            var max = list.Max(c => c.Item5);
 
+            var allmax = list.Where(c => c.Item5 == max).Select(c => c).ToList();
+            var output = new List<string>();
+            foreach (var it in allmax)
+            {
+                output.Add(s1.Substring(it.Item1, it.Item2) + s2.Substring(it.Item3, it.Item4));
+            }
+            output.Sort();
+            Console.WriteLine(output[0]);
 
         }
+
+
+        public void Solution3(string s1, string s2)
+        {
+            int start1 = 0, end1 = s1.Length, start2 = 0, end2 = 1;
+            var list = new List<Tuple<int, int, int, int, int>>();
+            int otboy = -1;
+            while (start1 < s1.Length)
+            {
+                if (end1 ==0)
+                {
+                    start1++;
+                    end1 = s1.Length-start1;
+                }
+                if (end1 == 0)
+                    continue;
+
+                start2 = 0;
+                end2 = s2.Length;
+                while (start2 < s2.Length)
+                {
+                    if (otboy > 0 && otboy > (end1+end2))
+                    {
+                        start2++;
+                        end2 = s2.Length - start2;
+                    }
+                    else
+                    {
+
+                        if (end2 == 0)
+                        {
+                            start2++;
+                            end2 = s2.Length - start2;
+
+                        }
+                        if (end2 == 0)
+                            continue;
+
+
+
+                        var str = s1.Substring(start1, end1) + s2.Substring(start2, end2);
+                        if (IsPalindrome(str))
+                        //if (IsPalindrome(s1,en)
+                        {                            
+                            list.Add(new Tuple<int, int, int, int, int>(start1, end1, start2, end2, str.Length));
+                            otboy = str.Length;
+                        }
+                        end2--;
+                    }
+
+                }
+
+                end1--;
+            }
+
+
+            if (list.Count == 0)
+            {
+                Console.WriteLine(-1);
+                //continue; //UNCOMMENT IT
+                return;
+            }
+
+            var max = list.Max(c => c.Item5);
+
+            var allmax = list.Where(c => c.Item5 == max).Select(c => c).ToList();
+            var output = new List<string>();
+            foreach (var it in allmax)
+            {
+                output.Add(s1.Substring(it.Item1, it.Item2) + s2.Substring(it.Item3, it.Item4));
+            }
+            output.Sort();
+            Console.WriteLine(output[0]);
+
+        }
+
+        private static readonly object locker = new object();
 
         private bool IsPalindrome(string s)
         {
@@ -173,5 +216,37 @@ namespace Problems.hackerrank.Strings
             }
             return true;
         }
+
+        //private bool IsPalindrome(string s1, int s1s, int s1e , string s2, int s2s, int s2e)
+        //{
+        //    int start = s1s, end=s1s+;
+
+
+
+        //    while (start < end)
+        //    {
+        //        if (start <= s1len && end > s1len+1)
+        //        {
+        //            if (s1[start] != s2[end])
+        //                return false;
+        //        }
+        //        else if(start<=s1len &&end<=s1len)
+        //        {
+        //            if (s1[start] != s1[end])
+        //                return false;
+        //        }
+        //        else if(start>s1len && end>s1len)
+        //        {
+        //            if (s1[start] != s2[end])
+        //                return false;
+        //        }
+        //        //if (s[start] != s[end])
+        //        //    return false;
+
+        //        start++;
+        //        end--;
+        //    }
+        //    return true;
+        //}
     }
 }
